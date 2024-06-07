@@ -1,17 +1,16 @@
 import streamlit as st
 import time
 #from dotenv import load_dotenv  # Load environment variables from a file
-import os
 import base64 #for locally stored images
 from langchain.chains import RetrievalQA
 from langchain_chroma import Chroma
-import numpy as np
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings,
 )
-import gradio as gr
+
+
 
 embedding_function = SentenceTransformerEmbeddings(model_name="BAAI/bge-small-en-v1.5")
 
@@ -71,7 +70,7 @@ def set_png_as_page_bg(png_file,header):
     # the middle .st-emotion-cache-1r4qj8v
     header = '''
     <style>
-    .st-emotion-cache-18ni7ap{
+    .st-emotion-cache-12fmjuu{
         background-image: url("data:image/png;base64,%s");
         background-size: cover;
     } 
@@ -79,7 +78,7 @@ def set_png_as_page_bg(png_file,header):
     ''' % header_str
     test = '''
     <style>
-    .st-emotion-cache-1r4qj8v{
+    .st-emotion-cache-bm2z3a{
         background-image: url("data:image/png;base64,%s");
         background-size: cover;
     }
@@ -105,7 +104,7 @@ def set_png_as_page_bg(png_file,header):
 def set_text_color():
     text = '''
     <style>
-    .st-emotion-cache-10trblm.e1nzilvr1{
+    h1{
         color: rgb(254 202 111);
     }
     </style>
@@ -130,14 +129,14 @@ def getBotResponse(query):
 
 def main():
 
-    #set_png_as_page_bg('background.png','background1.png')
+    set_png_as_page_bg('background.png','background1.png')
     set_text_color()
 
-
+    #set the color of conversation text
     st.markdown(
         """
         <style>
-        .st-emotion-cache-10trblm.e1nzilvr1 {
+        .st-emotion-cache-1flajlm{
             color: white;
         }
         </style>
@@ -148,7 +147,6 @@ def main():
     # Display the title
     st.title("Ask Al-Jazari")
     
-    # st.image("rasid_logo2.png")
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
@@ -180,7 +178,6 @@ def main():
                 # Add a blinking cursor to simulate typing
                 message_placeholder.markdown(full_response + "▌")
             message_placeholder.markdown(full_response)
-            #st.image(model.getImage(full_response))
         # Add assistant response to chat history
         st.session_state.messages.append({"role": "assistant", "content": full_response})
 

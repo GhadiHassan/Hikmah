@@ -1,7 +1,5 @@
-import os
 from langchain.chains import RetrievalQA
 from langchain_chroma import Chroma
-import numpy as np
 from langchain_groq import ChatGroq
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings.sentence_transformer import (
