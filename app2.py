@@ -1,6 +1,10 @@
+
+#this is to fix sqlite chroma error from streamlit + add pysqlite3-binary to requirements.txt
 __import__('pysqlite3')
 import sys
 sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
+
 import streamlit as st
 import time
 #from dotenv import load_dotenv  # Load environment variables from a file
@@ -30,6 +34,7 @@ chat = ChatGroq(temperature=0, groq_api_key="gsk_aZZbhe9COGH5uQsCfOalWGdyb3FYsAD
 prompt_template = """You are Aljazari, please use the following pieces of context to answer the question at the end. Please follow the following rules:
 1. If you don't know the answer, don't try to make up an answer.
 2. If you find the answer, write the answer in a concise way with five sentences maximum.
+3. don't refer to the provided context in your answer.
 
 {context}
 
@@ -132,7 +137,7 @@ def getBotResponse(query):
 
 def main():
 
-    set_png_as_page_bg('background.png','background1.png')
+    set_png_as_page_bg('background1.png','background1.png')
     set_text_color()
 
     #set the color of conversation text
