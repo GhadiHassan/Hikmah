@@ -6,7 +6,7 @@ from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings,
 )
 import gradio as gr
-
+import streamlit as st
 
 embedding_function = SentenceTransformerEmbeddings(model_name="BAAI/bge-small-en-v1.5")
 
@@ -18,7 +18,7 @@ vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddi
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
 
-chat = ChatGroq(temperature=0, groq_api_key="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", model_name="mixtral-8x7b-32768")
+chat = ChatGroq(temperature=0, groq_api_key=st.secrets["groq_api_key"], model_name="mixtral-8x7b-32768")
 
 
 prompt_template = """You are Aljazari, please use the following pieces of context to answer the question at the end. Please follow the following rules:
