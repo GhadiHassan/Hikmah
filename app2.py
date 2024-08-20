@@ -136,7 +136,7 @@ def getBotResponse(query):
 
 def main():
 
-    set_png_as_page_bg('background1.png','background1.png')
+    set_png_as_page_bg('backgrounds/backgrounds-1.png','backgrounds/backgrounds-1.png')
     set_text_color()
 
     #set the color of conversation text
