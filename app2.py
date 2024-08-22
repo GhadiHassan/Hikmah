@@ -11,6 +11,7 @@ import base64 #for locally stored images
 from langchain.chains import RetrievalQA
 from langchain_chroma import Chroma
 from langchain_groq import ChatGroq
+from langchain_openai import ChatOpenAI
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings,
@@ -28,7 +29,9 @@ vectorstore = Chroma(persist_directory="./chroma_db", embedding_function=embeddi
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 3})
 
 
-chat = ChatGroq(temperature=0, groq_api_key=st.secrets["groq_api_key"], model_name="mixtral-8x7b-32768")
+#chat = ChatGroq(temperature=0, groq_api_key=st.secrets["groq_api_key"], model_name="mixtral-8x7b-32768")
+chat = ChatOpenAI(model="gpt-4o-mini", api_key = st.secrets["openai_api_key"])
+
 
 prompt_template = """You are Aljazari, please use the following pieces of context to answer the question at the end. Please follow the following rules:
 1. If you don't know the answer, don't try to make up an answer.
