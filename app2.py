@@ -1,7 +1,7 @@
 #this is to fix sqlite chroma error from streamlit + add pysqlite3-binary to requirements.txt
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+# __import__('pysqlite3')
+# import sys
+# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 import streamlit as st
@@ -11,7 +11,7 @@ import base64 #for locally stored images
 from langchain.chains import RetrievalQA
 from langchain_chroma import Chroma
 from langchain_groq import ChatGroq
-from langchain_openai import ChatOpenAI
+from langchain_openai import ChatOpenAI 
 from langchain.prompts import PromptTemplate
 from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings,
