@@ -1,7 +1,7 @@
 #this is to fix sqlite chroma error from streamlit + add pysqlite3-binary to requirements.txt
-# __import__('pysqlite3')
-# import sys
-# sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+__import__('pysqlite3')
+import sys
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 
 
 import streamlit as st
