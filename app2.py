@@ -195,4 +195,11 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    st.sidebar.title("Navigation")
+    page = st.sidebar.selectbox("Select a page", ["Home","Generate Video"])
+    if page == "Home":
+        main()
+
+    elif page == "Generate Video":
+        import pages.avatar
+        pages.avatar.app() #the avatar code must be inside app func
